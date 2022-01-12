@@ -37,14 +37,13 @@ const FeaturedRepo = ({ repo }) => {
             const forkList = []
             console.log(forksJSON)
             for(let x in forksJSON){
-                forkList.push(forksJSON[x].url)
+                forkList.push("www.github.com/"+forksJSON[x].url.substring(29))
                 console.log(forksJSON[x].url)
             }
             setForks(forkList)
         }
-        
     }
-
+        
     function languagePercent(languages){
         const totalLines = Object.values(languages).reduce((a, b) => a + b);
         const percentages = []
@@ -54,24 +53,29 @@ const FeaturedRepo = ({ repo }) => {
         }
         return percentages
     }
-    
+
+    let forkLinks = forks[0]
+
     // const percentageDisplay = getData[0]
     // console.log(percentageDisplay)
     return(
         <div className="flex-container">
             <div id="featured">
                 <h4>{repo.repoName}</h4>
-                <ul> 
-                    <li> Languages: </li>
-                    {percentages.map( x => <li>{x}</li>)}
-                </ul>
+                    <ul> 
+                        <li> Languages: </li>
+                        {percentages.map( x => <li>{x}</li>)}
+                    </ul>
+                    {/* <div id="percentages">
+                        {percentages.map ( x => <span> {x.match(/\d+/)} </span> )}
+                    </div> */}
                 <ul> 
                     <li> Stargazers: </li>
                     <li>{stargazers}</li>
                 </ul>
                 <ul> 
                     <li> Forks: </li>
-                    {forks.map( x => <li> {x[0]=="h" ?  <a href={x}> {x.substring(29)} </a> : x}</li>)}
+                    {forks.map( x => <li> { x[0]=="w" ?  <a href={"https://"+ x} target="_blank"> {x.substring(15)} </a> : x } </li>)}
                 </ul>
                 <ul> 
                     <li> Last Updated: </li>

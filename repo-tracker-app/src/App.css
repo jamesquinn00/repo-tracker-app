@@ -33,6 +33,8 @@ form{
     background-color: white;
     border: indianred 1px solid;
     box-shadow: rgb(143, 63, 63) 2px 2px;
+    padding: 15px 0px 15px 0px;
+    font-size: 105%;
 }
 
 #repos-grid>div:hover{
@@ -50,7 +52,7 @@ a{
 }
 
 #featured{
-    width: 80%;
+    width: 90%;
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -71,6 +73,15 @@ a{
 
 #featured>ul>:first-child{
     font-weight: bold;
+}
+
+#percent-container{
+    display:flex;
+    flex-direction: column;
+}
+
+#percentages{
+    display: flex;
 }
 
 .flex-container{

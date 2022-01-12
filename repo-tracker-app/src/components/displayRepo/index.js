@@ -19,11 +19,6 @@ const DisplayRepo = ({ handleRepo, allRepos, error }) => {
                             <li>Name: {repo.repoName} </li>
                             <br></br>
                             <li><a href={repo.link} target="_blank"> Link </a> </li>
-                            
-                            {/* <li><a href={repo.languages} target="_blank"> Languages </a> </li> */
-                            /* <li><a href={repo.stargazers} target="_blank"> Stargazers </a> </li>
-                            <li><a href={repo.forks} target="_blank"> Forks </a> </li> */}
-                            <br></br>
                         </div>
                     ))}
             </div>

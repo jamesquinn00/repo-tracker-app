@@ -3,7 +3,7 @@ import React from 'react';
 
 import { MainPage } from './pages';
 // import { Header } from './layout';
-// import './App.css'
+import './App.css'
 // import { Provider } from 'react-redux';
 
 const App = () => {

@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { fetchUser } from '../../actions'
+// import { fetchUser } from '../../actions'
 
-const NameInput = () => {
+const NameInput = ({ fetchUser }) => {
+
+    const [ userName, setUsername ] = useState('')
 
     const handleSubmit = e => {
         e.preventDefault()
         console.log(e.target.username.value)
+        setUsername(e.target.username.value)
         fetchUser(e.target.username.value)
     }
 

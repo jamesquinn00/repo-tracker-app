@@ -1,0 +1,17 @@
+#repos{
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    column-gap: 3%;
+    row-gap: 3%;
+}
+
+#repos>div{
+    border: indianred 1px solid;
+}
+
+#featured{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-self: center;
+}

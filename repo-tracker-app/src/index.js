@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
-import { createStore } from 'redux';
-import { devToolsEnhancer } from 'redux-devtools-extension';
+import { createStore, applyMiddleware } from 'redux';
+import { devToolsEnhancer, composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux'
 import repoReducer from './reducers/repoReducer';
+import thunk from 'redux-thunk';
 
-const store = createStore(repoReducer, devToolsEnhancer());
+const store = createStore(repoReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <React.StrictMode>

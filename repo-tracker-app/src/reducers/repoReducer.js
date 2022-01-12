@@ -1,13 +1,12 @@
-const initState = {repos: [{repoName: "", isPrivate: "", link: "", languages: "", stargazers: "", forks: ""}]}
+const initState = {repos: [{repoName: "Name ", link: "Link ", languages: "Languages ", stargazers: "Stargazers ", forks: "Forks "}]}
 
 const repoReducer = (state=initState, action) => {
     switch(action.type) {
         case "LOAD_REPOS":
-            return {...state,
-                    repos: [...state.repos, action.payload]};
+            console.log("Here")
+            return {...state, repos: action.payload};
         case "ERROR":
-            state = action.payload
-            return {state};
+            return { ...state, error: action.payload};
         default:
             return state;
     }

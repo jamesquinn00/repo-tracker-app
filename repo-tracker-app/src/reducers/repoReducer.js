@@ -3,7 +3,6 @@ const initState = {repos: [{repoName: "Name ", link: "Link ", languages: "Langua
 const repoReducer = (state=initState, action) => {
     switch(action.type) {
         case "LOAD_REPOS":
-            console.log("Here")
             return {...state, repos: action.payload, error: ""};
         case "ERROR":
             return { ...state, error: action.payload};

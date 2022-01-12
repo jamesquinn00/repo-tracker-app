@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const FeaturedRepo = ({ repo }) => {
-
+    // console.log(repo.repoName)
     const [ percentages , setPercentages ] = useState([])
     const [ stargazers, setStargazers ] = useState()
     const [ forks, setForks ] = useState([])
@@ -35,10 +35,8 @@ const FeaturedRepo = ({ repo }) => {
         }
         else{
             const forkList = []
-            console.log(forksJSON)
             for(let x in forksJSON){
                 forkList.push("www.github.com/"+forksJSON[x].url.substring(29))
-                console.log(forksJSON[x].url)
             }
             setForks(forkList)
         }
@@ -54,30 +52,26 @@ const FeaturedRepo = ({ repo }) => {
         return percentages
     }
 
-    let forkLinks = forks[0]
-
-    // const percentageDisplay = getData[0]
-    // console.log(percentageDisplay)
     return(
         <div className="flex-container">
             <div id="featured-box">
             <h3>{repo.repoName}</h3>
             <div id="featured-data">
                 <ul> 
-                    <li> Languages: </li>
-                    {percentages.map( x => <li>{x}</li>)}
+                    <li key="languages"> Languages: </li>
+                    {percentages.map( x => <li key={x}>{x}</li>)}
                 </ul>
                 <ul> 
-                    <li> Stargazers: </li>
-                    <li>{stargazers}</li>
+                    <li key="stargazers"> Stargazers: </li>
+                    <li key="stargazer-count">{stargazers}</li>
                 </ul>
                 <ul> 
-                    <li> Forks: </li>
-                    {forks.map( x => <li> { x[0]=="w" ?  <a href={"https://"+ x} target="_blank"> {x.substring(15)} </a> : x } </li>)}
+                    <li key="forks"> Forks: </li>
+                    {forks.map( x => <li key={x}> { x[0]=="w" ?  <a href={"https://"+ x} target="_blank"> {x.substring(15)} </a> : x } </li>)}
                 </ul>
                 <ul> 
-                    <li> Last Updated: </li>
-                    <li>{repo.updated.substring(0,repo.updated.length-10)}</li>
+                    <li key="last-updated"> Last Updated: </li>
+                    <li key="last-updated-date">{repo.updated.substring(0,repo.updated.length-10)}</li>
                 </ul>
             </div>
             </div>

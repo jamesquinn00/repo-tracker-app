@@ -18,7 +18,7 @@ const DisplayRepo = ({ handleRepo, allRepos, error }) => {
                         <div key={repo.repoName} onClick={() => handleRepo(repo)}>
                             <li>Name: {repo.repoName} </li>
                             <br></br>
-                            <li><a href={repo.link} target="_blank"> Link </a> </li>
+                            <li> <a href={repo.link} target="_blank"> Link </a> </li>
                         </div>
                     ))}
             </div>

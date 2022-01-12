@@ -4,7 +4,6 @@ export const fetchUser = (username)=>{
     return async (dispatch) => {
         try {
             const { data } = await axios.get(`https://api.github.com/users/${username}/repos`)
-            console.log(data)
             let allRepos = []
             for(let x = 0; x < data.length; x++){
                 // iterating through all repos, create object for each individual repo

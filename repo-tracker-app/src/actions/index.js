@@ -7,13 +7,15 @@ export const fetchUser = (username)=>{
             let allRepos = []
             for(let x = 0; x < data.length; x++){
                 // iterating through all repos, create object for each individual repo
+                console.log(data[x])
                 let repo = {
                     userName: username,
                     repoName: data[x].name,
                     link: data[x].html_url,
                     languages: data[x].languages_url,
-                    stargazers: data[x].stargazers_url,
-                    forks: data[x].forks_url
+                    stargazers: data[x].stargazers_count,
+                    forks: data[x].forks_url,
+                    updated: data[x].updated_at
                 }
                 allRepos.push(repo)
             }

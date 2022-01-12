@@ -15,10 +15,10 @@ const MainPage = () => {
 
     return(
         <>
-        <h1>GitHub Repo Tracker</h1>
+        <h1><a href="index.html"> GitHub Repo Tracker </a></h1>
         <h4>Enter GitHub Username below to display public repositories:</h4>
-        <NameInput fetchUser={search}/>
-        { repo ? <FeaturedRepo repo={repo}/> : <></>}
+        <NameInput fetchUser={search} setRepo={setRepo}/>
+        { repo && !error ? <FeaturedRepo repo={repo} error={error}/> : <></>}
         <DisplayRepo allRepos={allRepos} error={error} handleRepo={setRepo}/>
         </>
     )

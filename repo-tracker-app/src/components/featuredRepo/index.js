@@ -2,15 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const FeaturedRepo = ({ repo }) => {
-    // console.log(repo.repoName)
-    console.log(repo.languages)
 
-    const [ percentages , setPercentages ] = useState({})
-    const [ stargazers, setStargazers ] = useState({})
-    const [ forks, setForks ] = useState({})
+    const [ percentages , setPercentages ] = useState([])
+    const [ stargazers, setStargazers ] = useState()
+    const [ forks, setForks ] = useState([])
 
     useEffect( ()=> {
-        console.log("repo changed")
         getData()
     },[ repo ]);
 
@@ -21,31 +18,39 @@ const FeaturedRepo = ({ repo }) => {
         }
         const languages = await fetch(repo.languages, options);
         const languagesJSON = await languages.json()
-        console.log(Object.keys(languagesJSON).length)
         if(Object.keys(languagesJSON).length === 0 ){
-            setPercentages('No languages to display')
+            setPercentages(["No languages to display"])
         }
         else{
             const percentages = languagePercent(languagesJSON)
             setPercentages(percentages)
         }
-        
 
-        const stargazers = await fetch(repo.stargazers, options);
-        const stargazersJSON = await stargazers.json()
-        setStargazers(stargazersJSON)
+        setStargazers(repo.stargazers)
 
         const forks = await fetch(repo.forks, options);
         const forksJSON = await forks.json()
-        setForks(forksJSON)
+        if(Object.keys(forksJSON).length === 0 ){
+            setForks(["No forks to display"])
+        }
+        else{
+            const forkList = []
+            console.log(forksJSON)
+            for(let x in forksJSON){
+                forkList.push(forksJSON[x].url)
+                console.log(forksJSON[x].url)
+            }
+            setForks(forkList)
+        }
+        
     }
 
     function languagePercent(languages){
         const totalLines = Object.values(languages).reduce((a, b) => a + b);
-        const percentages = {}
+        const percentages = []
         for(let x in languages){
-            const percentage = languages[x]/totalLines * 100
-            percentages[x] = percentage
+            const percentage = (languages[x]/totalLines * 100).toFixed(1)
+            percentages.push(x + ": " + percentage.toString() + "%")
         }
         return percentages
     }
@@ -53,11 +58,28 @@ const FeaturedRepo = ({ repo }) => {
     // const percentageDisplay = getData[0]
     // console.log(percentageDisplay)
     return(
-       <div id="featured">
-        <h4>Featured Repo!</h4>
-
+        <div className="flex-container">
+            <div id="featured">
+                <h4>{repo.repoName}</h4>
+                <ul> 
+                    <li> Languages: </li>
+                    {percentages.map( x => <li>{x}</li>)}
+                </ul>
+                <ul> 
+                    <li> Stargazers: </li>
+                    <li>{stargazers}</li>
+                </ul>
+                <ul> 
+                    <li> Forks: </li>
+                    {forks.map( x => <li> {x[0]=="h" ?  <a href={x}> {x.substring(29)} </a> : x}</li>)}
+                </ul>
+                <ul> 
+                    <li> Last Updated: </li>
+                    <li>{repo.updated.substring(0,repo.updated.length-10)}</li>
+                </ul>
+            </div>
         </div>
     );
 };
 
-export default FeaturedRepo;
+export default FeaturedRepo; 

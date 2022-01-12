@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // import { fetchUser } from '../../actions'
 
-const NameInput = ({ fetchUser }) => {
+const NameInput = ({ fetchUser, setRepo }) => {
 
     const [ userName, setUsername ] = useState('')
 
@@ -12,6 +12,10 @@ const NameInput = ({ fetchUser }) => {
         setUsername(e.target.username.value)
         fetchUser(e.target.username.value)
     }
+
+    useEffect( ()=> {
+        setRepo("")
+    }, [ userName ])
 
     return(
         <form onSubmit={ e => handleSubmit(e) }>

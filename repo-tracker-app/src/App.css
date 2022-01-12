@@ -1,17 +1,91 @@
-#repos{
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap');
+
+body{
+    font-family: 'PT Serif';
+    background-color: white;
+}
+
+h1, h4, p{
+    text-align: center;
+}
+
+h1>a{
+    text-decoration: none;
+    color: black;
+}
+
+form{
+    text-align: center;
+}
+
+#repos-grid{
+    margin-top: 15px;
     display: grid;
     grid-template-columns: 30% 30% 30%;
     column-gap: 3%;
-    row-gap: 3%;
+    row-gap: 15px;
 }
 
-#repos>div{
+#repos-grid>div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
     border: indianred 1px solid;
+    box-shadow: rgb(143, 63, 63) 2px 2px;
+}
+
+#repos-grid>div:hover{
+    cursor: pointer;
+    background-color: rgb(255, 230, 230);
+    box-shadow: rgb(143, 63, 63) 4px 4px;
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
 }
 
 #featured{
+    width: 80%;
+    height: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border: indianred 1px solid;
+    box-shadow: rgb(143, 63, 63) 2px 2px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#featured>ul{
+    margin-right: 3%;
+}
+
+#featured>h4{
+    width: 20%
+}
+
+#featured>ul>:first-child{
+    font-weight: bold;
+}
+
+.flex-container{
+    display: flex;
     justify-content: center;
-    justify-self: center;
+}
+
+@media screen and (max-width: 907px){
+    #repos-grid{
+        grid-template-columns: 46% 46%;
+    }
+}
+
+@media screen and (max-width: 612px){
+    #repos-grid{
+        grid-template-columns: 92%;
+    }
 }

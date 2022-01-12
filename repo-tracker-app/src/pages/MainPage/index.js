@@ -14,8 +14,12 @@ const MainPage = () => {
     return(
         <>
         <div className="flex-container">
+            <a href="index.html">
             <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"></img>
-            <h1><a href="index.html"> GitHub Repo Tracker </a></h1>
+            </a>
+            <a href="index.html">
+            <h1> GitHub Repo Tracker</h1>
+            </a>
         </div>
         <h4>Enter GitHub Username below to display public repositories:</h4>
         <NameInput fetchUser={search} setRepo={setRepo}/>

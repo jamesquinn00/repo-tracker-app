@@ -55,7 +55,7 @@ const FeaturedRepo = ({ repo }) => {
     return(
         <div className="flex-container">
             <div id="featured-box">
-            <h3>{repo.repoName}</h3>
+            <h3><a href={repo.link} target="_blank">{repo.repoName}</a></h3>
             <div id="featured-data">
                 <ul> 
                     <li key="languages"> Languages: </li>

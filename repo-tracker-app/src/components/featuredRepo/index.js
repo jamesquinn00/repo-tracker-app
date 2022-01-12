@@ -60,15 +60,13 @@ const FeaturedRepo = ({ repo }) => {
     // console.log(percentageDisplay)
     return(
         <div className="flex-container">
-            <div id="featured">
-                <h4>{repo.repoName}</h4>
-                    <ul> 
-                        <li> Languages: </li>
-                        {percentages.map( x => <li>{x}</li>)}
-                    </ul>
-                    {/* <div id="percentages">
-                        {percentages.map ( x => <span> {x.match(/\d+/)} </span> )}
-                    </div> */}
+            <div id="featured-box">
+            <h3>{repo.repoName}</h3>
+            <div id="featured-data">
+                <ul> 
+                    <li> Languages: </li>
+                    {percentages.map( x => <li>{x}</li>)}
+                </ul>
                 <ul> 
                     <li> Stargazers: </li>
                     <li>{stargazers}</li>
@@ -81,6 +79,7 @@ const FeaturedRepo = ({ repo }) => {
                     <li> Last Updated: </li>
                     <li>{repo.updated.substring(0,repo.updated.length-10)}</li>
                 </ul>
+            </div>
             </div>
         </div>
     );

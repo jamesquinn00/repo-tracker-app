@@ -42,15 +42,19 @@ form{
     align-items: center;
     background-color: white;
     border: indianred 1px solid;
-    box-shadow: rgb(143, 63, 63) 2px 2px;
+    box-shadow: rgb(143, 63, 63) 2px 2px 1px;
+    border-radius: 3px;
     padding: 15px 0px 15px 0px;
     font-size: 105%;
+    transition: box-shadow 0.3s;
+    transition: background-color 0.3s;
 }
 
 #repos-grid>div:hover{
     cursor: pointer;
     background-color: rgb(255, 230, 230);
-    box-shadow: rgb(143, 63, 63) 4px 4px;
+    box-shadow: rgb(143, 63, 63) 4px 4px 2px;
+    font-weight: bold;
 }
 
 li{
